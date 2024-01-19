@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trench Conveyor AI Interface - Successful</title>
+    
+<body>
+    <!-- <div class="container-video"> -->
+        <!-- <div class="logo logo-left"><img src="{{ url_for('static', filename='assets/REC Logo.png') }}" width="200px" height="auto"></div> -->
+        <!-- <div class="logo logo-right"><img src="{{ url_for('static', filename='assets/Apollo logo.png') }}" width="160px" height="auto"></div> -->
+        <!-- <h1 class="title">Trench Conveyor AI Interface</h1> -->
+            <!-- <div class="sub-containers-wrapper"> -->
+                <!-- <h4>Feed 1 and 2</h4> -->
+                <!-- <div class="sub-container-video"> -->
+                    <img  id="video-player" class="video-player" width="600" height="auto" controls src="{{ url_for('video_feed') }}" alt="Camera Feed">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <!-- <img  id="video-player" class="video-player" width="600" height="auto" controls src="{{ url_for('video_feed') }}" alt="Camera Feed"> -->
+                <!-- </div> -->
+                <!-- <h4>Feed 3 and 4</h4> -->
+                <!-- <div class="sub-container-video">
+                    <img  id="video-player" class="video-player" width="600" height="auto" controls src="{{ url_for('video_feed') }}" alt="Camera Feed">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <img  id="video-player" class="video-player" width="600" height="auto" controls src="{{ url_for('video_feed') }}" alt="Camera Feed">
+                </div> -->
+                
+            <!-- </div> -->
+        
+            <script>
+                // Get all video player elements
+                const videoPlayers = document.querySelectorAll('.video-player');
+            
+                // Attach click event listeners to each video player
+                videoPlayers.forEach(player => {
+                    player.addEventListener('click', (event) => {
+                        event.stopPropagation(); // Prevent the click from propagating to the document
+                        videoPlayers.forEach(otherPlayer => {
+                            if (otherPlayer !== player) {
+                                otherPlayer.classList.remove('enlarged');
+                            }
+                        });
+                        player.classList.toggle('enlarged');
+                    });
+                });
+            
+                // Attach a click event listener to the document
+                document.addEventListener('click', () => {
+                    videoPlayers.forEach(player => {
+                        player.classList.remove('enlarged');
+                    });
+                });
+            </script>
+                <script src="{{ url_for('static', filename='js/script_three.js') }}"></script>
+
+            
+    </div>
+</body>
+</html>
